@@ -1,15 +1,13 @@
-import { AppBar, Button, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
+import { AppBar, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material'
 import React from 'react'
 import { NavListDrawer } from './NavListDrawer'
 import { DetailList } from './DetailList';
 import MenuIcon from "@mui/icons-material/Menu";
-import { horizontalNavItems } from './NavBarList';
 import { ServiceList } from './ServiceList';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import HomeIcon from '@mui/icons-material/Home';
 import PedalBikeIcon from '@mui/icons-material/PedalBike';
-import { useAuth } from '../../Auth';
 import { NavLink } from 'react-router-dom';
 import { Box } from '@mui/system';
 
@@ -17,12 +15,7 @@ const NavBar = () => {
     const [open, setOpen] = React.useState(false)
     const [openNav, setOpenNav] = React.useState(false);
     const [openServ, setOpenServ] = React.useState(false)
-    const auth = useAuth()
-    // const menuOpen = () => {
-    //     setOpen(!open);
-    //     console.log(open);
-    //   };
-
+    
   const handleClick = () => {
     setOpenNav(!openNav);
   };
@@ -75,22 +68,7 @@ const NavBar = () => {
                 </ListItem>
             </List>
 
-            {/* {horizontalNavItems.map(i => (
-                (!i.private?
-                // (!i.nested && i.private === auth.authorized?
-                    <NavLink to={i.link} key={i.id}>
-                        <Box
-                        color="secondary"
-                        sx={{display: { xs: "none", sm: "block" }, "& :hover": { backgroundColor: "#4cd137" }}}>
-                        <Button>
-                            {i.icon}
-                            {i.title}
-                        </Button>
-                        </Box>
-                    </NavLink>:null
-                )
-            ))} */}
- 
+           
         </Toolbar>
     </AppBar>
     <Drawer

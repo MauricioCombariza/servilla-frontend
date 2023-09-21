@@ -1,4 +1,4 @@
-import React, { FormEvent, useRef } from "react";
+import { FormEvent, useRef } from "react";
 import { ButtonSer } from "../../components/ButtonSer";
 import Container from '@mui/material/Container';
 import { useAuth } from "../../Auth";
@@ -18,22 +18,26 @@ const Ingresar = () => {
     const auth = useAuth() as AuthContextProps
     const form = useRef<HTMLFormElement>(null)
     
-    const [answer, setAnswer] = React.useState('') 
     const OnFormSubmit = (dataLogin: LoginType) => usePostLogin(dataLogin);
 
     
     const login = (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
-        const formData = new FormData(form.current!)
-        const data: FormData = {
-            auth: auth,
-            API: 'https://servilla-server-api.onrender.com/user/login',
-            // API: 'http://127.0.0.1:8000/user/login',
-            email: formData.get('email') as string,
-            password: formData.get('password') as string
-        }
+        if (form.current) {
+            const formData = new FormData(form.current);
+            const data: FormData = {
+              auth: auth,
+              API: 'https://servilla-server-api.onrender.com/user/login',
+              // API: 'http://127.0.0.1:8000/user/login',
+              email: formData.get('email') as string,
+              password: formData.get('password') as string
+            };
         
-        OnFormSubmit(data)  
+            OnFormSubmit(data);
+          } else {
+            // Manejar el caso en el que form.current es nulo
+            console.error('form.current es nulo');
+          }  
     }
     
     
@@ -54,9 +58,7 @@ const Ingresar = () => {
                     className="w-full leading-snug text-gray-800 placeholder-blue-400 py-1 px-4 bg-green-600 rounded border border-darkser hover:bg-ser focus:outline-none focus:shadow-outline hover:text-white"
                     type="email"
                     name="email"
-                    // value={username}
                     placeholder="Email"
-                    // onChange={e => setUsername(e.target.value)}
                 />
                 </div>
                 <div className="py-2 px-2">
@@ -66,13 +68,12 @@ const Ingresar = () => {
                     type="password"
                     name="password"
                     placeholder="Password"
-                    // value={password}
-                    // onChange={(e) => setPassword(e.target.value)}
+                    
                 />
                 </div>
                 <div className="py-4">
                 <ButtonSer
-                // type="submit"
+                type="submit"
                 name={'INGRESAR'} />
                 </div>
                 <div className="text-red-500">
@@ -80,7 +81,6 @@ const Ingresar = () => {
                 </div>
                 
             </form>
-            <h1 className="text-3xl">{answer}</h1>
             </Container>
         </div>
     )
