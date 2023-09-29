@@ -4,7 +4,7 @@ import { useNavigate, Navigate } from "react-router-dom";
 interface User {
   email: string;
   username: string;
-  company: string
+  company: number
   perfil: number
   activate: number
 }
@@ -28,7 +28,7 @@ const AuthContext = createContext<AuthContextProps>({
   user: {
     email: '',
     username: '',
-    company: '',
+    company: 1,
     activate: 1,
     perfil: 1
   },

@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom'
 import { Calidad } from '../Pages/Calidad'
 import { Contactenos } from '../Pages/Contactenos'
 import { Cliente } from '../Pages/Historico/Cliente'
+import { Dashboard } from '../Pages/Dashboard'
 import { Servilla } from '../Pages/Historico/Servilla'
 import { HomePage } from '../Pages/Home'
 import { Ingresar } from '../Pages/Ingresar'
@@ -34,6 +35,10 @@ const AppRoutes = () => {
       {
         path: "/contactenos",
         element: <Contactenos />
+      },
+      {
+        path: "/dashboard",
+        element: <ProtectRoute><Dashboard /></ProtectRoute>
       },
       {
         path: "/indice",

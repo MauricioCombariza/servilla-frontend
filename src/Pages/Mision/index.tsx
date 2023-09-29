@@ -17,7 +17,7 @@ const Mision = () => {
       ></CardMedia>
       <Typography variant='h4' align='center' sx={{p:1}}> Misión </Typography>
 
-      <Typography color="text.primary" sx={{px:5}}>
+      <Typography color="text.primary" sx={{px:5, textAlign: 'justify'}}>
         Somos una compañía dedicada a la mensajería expresa del sector público,
         privado y mixto, con cubrimiento urbano y nacional. Servilla S.A.S
         analiza el mercado para enfrentar los cambios migrando hacia una era

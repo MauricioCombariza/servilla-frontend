@@ -17,7 +17,7 @@ const Vision = () => {
       ></CardMedia>
       <Typography variant='h4' align='center' sx={{p:1}}> Visión </Typography>
 
-      <Typography color="text.primary" sx={{px:5}}>
+      <Typography color="text.primary" sx={{px:5, textAlign: 'justify'}}>
         En 5 años Servilla S.A.S será reconocida como una organización de
         soluciones de transporte de bienes y correspondencia, dirigida a ofrecer
         soluciones de logística donde nuestros principales compromisos serán:

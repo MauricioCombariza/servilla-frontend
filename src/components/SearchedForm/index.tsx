@@ -44,19 +44,11 @@ const SearchedForm = () => {
         pathEnd = dirnum;
       }
 
-    const urlBase = "https://servilla-server-api.onrender.com/event"
-    // const urlBase = "http://127.0.0.1:8000/event";
+    // const urlBase = "https://servilla-server-api.onrender.com/event"
+    const urlBase = "http://127.0.0.1:8000/event";
     const API = `${urlBase}/${pathFetch}/${pathEnd}`
 
-    // const UseGetUsers = async (API: string) => {
-    //     const res = await fetch(API, config)
-    //     if (res.status === 403) {
-    //       throw new Error('Acceso no autorizado');
-    //     }
-    //     const data = await res.json()
-    //     setUsuarios(data)
-    // }
-
+    
     const buscar = async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
     
@@ -69,6 +61,10 @@ const SearchedForm = () => {
     
       try {
         const res = await fetch(API, config);
+        if (res.status === 401) {
+          setErrorMensaje('El serial no ha sido encontrado');
+          return
+        }
     
         if (res.status === 403) {
           throw new Error('Acceso no autorizado');

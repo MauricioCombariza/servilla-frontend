@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { ButtonSer } from "../../components/ButtonSer";
 import Container from '@mui/material/Container';
 import { useAuth } from "../../Auth";
@@ -20,25 +20,36 @@ const Ingresar = () => {
     
     const OnFormSubmit = (dataLogin: LoginType) => usePostLogin(dataLogin);
 
+    const [errorMensaje, setErrorMensaje] = useState<string | null>(null);
+
+
     
-    const login = (e: FormEvent<HTMLFormElement>) =>{
+    const login = async (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
         if (form.current) {
             const formData = new FormData(form.current);
             const data: FormData = {
               auth: auth,
-              API: 'https://servilla-server-api.onrender.com/user/login',
-              // API: 'http://127.0.0.1:8000/user/login',
+            //   API: 'https://servilla-server-api.onrender.com/user/login',
+              API: 'http://127.0.0.1:8000/user/login',
               email: formData.get('email') as string,
               password: formData.get('password') as string
             };
         
             OnFormSubmit(data);
-          } else {
-            // Manejar el caso en el que form.current es nulo
-            console.error('form.current es nulo');
-          }  
-    }
+            const response = await OnFormSubmit(data);
+            
+            if (response !== undefined) {
+                console.log("Error")
+            setErrorMensaje(response);
+            } else {
+            setErrorMensaje(null); // Limpiar el mensaje de error si la solicitud es exitosa
+            }
+        } else {
+                    // Manejar el caso en el que form.current es nulo
+                    console.error('form.current es nulo');
+                }  
+        }
     
     
     return (
@@ -81,6 +92,13 @@ const Ingresar = () => {
                 </div>
                 
             </form>
+            <div className="text-red-500">
+            {errorMensaje && (
+              <p className="text-red-500 font-bold mt-2">
+                {errorMensaje}
+              </p>
+            )}
+          </div>
             </Container>
         </div>
     )

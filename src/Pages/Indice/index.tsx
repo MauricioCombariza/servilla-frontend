@@ -12,7 +12,8 @@ interface FoxResponse {
 const Indice: React.FC = () => {
     const auth = useAuth() as AuthContextProps
     const perfil = auth.user.perfil
-    console.log(perfil)
+    const company = auth.user.company
+    console.log('Company:',company)
     const [imageUrl, setImageUrl] = useState<string>('');
     const navigate = useNavigate(); 
   const routeSearchServilla = () =>{ 
@@ -23,9 +24,13 @@ const Indice: React.FC = () => {
     const path = '/informes/informes-disponibles'; 
     navigate(path);
   }
-  const routSearchClient = () => {
-    const path = '/historico/cliente'; 
-    navigate(path);
+  // const routSearchClient = () => {
+  //   const path = '/historico/cliente'; 
+  //   navigate(path);
+  // }
+  const routeDashboard = () => {
+    const path = '/dashboard'
+    navigate(path)
   }
 
   useEffect(() => {
@@ -42,18 +47,18 @@ const Indice: React.FC = () => {
                 <div className="flex flex-col gap-4  w-full lg:w-1/3 mt-5 justify-center items-center m-3 p-3">
                     {perfil > 4?
                     <div className='flex flex-col gap-4 w-full mt-5 justify-center items-center m-3'>
-                        <Button variant="contained" color="success" size="large" fullWidth={true}>Dashboard</Button>
+                        <Button onClick={routeDashboard} variant="contained" color="success" size="large" fullWidth={true}>Dashboard</Button>
                         <Button onClick={routeInformesForm} variant="contained" color="success" size="large" fullWidth={true}>Informes</Button>
                         <Button onClick={routeSearchServilla} variant="contained" color="success" size="large" fullWidth={true}>Busquedas Servilla</Button>
                     </div>:
-                perfil > 2?
+                // perfil > 2?
                 <div className='flex flex-col gap-4 w-full mt-5 justify-center items-center m-3'>
                     <Button onClick={routeInformesForm} variant="contained" color="success" size="large" fullWidth={true}>Informes</Button>
                     <Button onClick={routeSearchServilla} variant="contained" color="success" size="large" fullWidth={true}>Busquedas Servilla</Button>
-                </div>:
-                perfil > 0?
-                <Button onClick={routSearchClient} variant="contained" color="success" size="large" fullWidth={true}>Busquedas</Button>:
-                <p>Estas en el lugar equivocado</p>
+                </div>
+                // perfil > 0?
+                // <Button onClick={routSearchClient} variant="contained" color="success" size="large" fullWidth={true}>Busquedas</Button>:
+                // <p>Estas en el lugar equivocado</p>
                     }                       
                 </div>
                 <div className="flex justify-center items-center h-2/3">

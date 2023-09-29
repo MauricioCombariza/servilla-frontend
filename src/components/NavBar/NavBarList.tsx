@@ -8,6 +8,7 @@ import HighQualityIcon from '@mui/icons-material/HighQuality';
 import LockIcon from '@mui/icons-material/Lock';
 import PedalBikeIcon from '@mui/icons-material/PedalBike';
 import MailIcon from '@mui/icons-material/Mail';
+import ArticleIcon from '@mui/icons-material/Article';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import AttachEmailIcon from '@mui/icons-material/AttachEmail';
 import WarehouseIcon from '@mui/icons-material/Warehouse';
@@ -21,7 +22,7 @@ const horizontalNavItems: ListType[] = [
         <HomeIcon sx={{ color:{xs:"green", sm:"white"} }}/>
         ,
         title: "Nosotros",
-        link: "/nosotros",
+        link: "/",
         nested: true,
         private: false,
         id:1,
@@ -61,13 +62,22 @@ const horizontalNavItems: ListType[] = [
         className: ''
     },
     {
-        icon: <LockIcon sx={{ color:{xs:"green", sm:"white"} }}/>,
-        title: "Cerrar sesion",
-        link: "/salir",
+        icon: <ArticleIcon sx={{ color:{xs:"green", sm:"white"} }}/>,
+        title: "Informes",
+        link: "/indice",
         private: true,
         id:6,
         className: ''
     },
+    {
+        icon: <LockIcon sx={{ color:{xs:"green", sm:"white"} }}/>,
+        title: "Cerrar sesion",
+        link: "/salir",
+        private: true,
+        id:7,
+        className: ''
+    },
+    
   ];
 
   const verticalNavItems: ListType[] = [
@@ -120,6 +130,15 @@ const horizontalNavItems: ListType[] = [
         icon: <LockIcon sx={{ color:{xs:"green", sm:"white"} }}/>,
         title: "Cerrar sesion",
         link: "/salir",
+        private: true,
+        id:405,
+        nested: false,
+        className: ''
+    },
+    {
+        icon: <LockIcon sx={{ color:{xs:"green", sm:"white"} }}/>,
+        title: "Informes",
+        link: "/indice",
         private: true,
         id:405,
         nested: false,

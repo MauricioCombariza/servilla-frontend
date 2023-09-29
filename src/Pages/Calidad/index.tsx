@@ -17,7 +17,7 @@ const Calidad = () => {
       ></CardMedia>
       <Typography variant='h4' align='center' sx={{p:1}}> Calidad </Typography>
 
-      <Typography color="text.primary" sx={{px:5}}>
+      <Typography color="text.primary" sx={{px:5, textAlign: 'justify'}}>
         En Servilla S.A.S, compañía dedicada a la mensajería expresa del sector
         público, privado y mixto, con cubrimiento urbano y nacional, nos
         comprometemos a la satisfacción de las expectativas de nuestros clientes
