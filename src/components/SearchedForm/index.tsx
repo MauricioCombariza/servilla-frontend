@@ -44,8 +44,8 @@ const SearchedForm = () => {
         pathEnd = dirnum;
       }
 
-    // const urlBase = "https://servilla-server-api.onrender.com/event"
-    const urlBase = "http://127.0.0.1:8000/event";
+    const urlBase = "https://servilla-server-api.onrender.com/event"
+    // const urlBase = "http://127.0.0.1:8000/event";
     const API = `${urlBase}/${pathFetch}/${pathEnd}`
 
     

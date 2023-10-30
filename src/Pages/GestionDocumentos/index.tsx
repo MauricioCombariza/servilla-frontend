@@ -16,8 +16,10 @@ function GestionDocumentos() {
       setLoading(true); // Muestra el spinner mientras se realiza la descarga
 
       const token = auth.token;
+      const API = 'https://servilla-server-api.onrender.com/document/documentos/gestion'
+      // const API = 'http://127.0.0.1:8000/document/documentos/gestion'
 
-      const response = await axios.get('http://127.0.0.1:8000/document/documentos/gestion', {
+      const response = await axios.get(API, {
         params: {
           fecha_inicial: fechaInicial,
           fecha_final: fechaFinal,
