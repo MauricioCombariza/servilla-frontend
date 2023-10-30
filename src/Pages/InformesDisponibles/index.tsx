@@ -7,11 +7,7 @@ const InformesDisponibles: () => JSX.Element | null = () => {
 
   const auth = useAuth()
   const navigate = useNavigate()
-  const pendientesMensajeros = () =>{ 
-    const path = '/informes'; 
-    navigate(path);
-    auth.setIsMensajero(true)
-  }
+  
   const gestion = () =>{ 
     const path = '/gestion_documentos'; 
     navigate(path);
