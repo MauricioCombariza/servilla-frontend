@@ -8,7 +8,7 @@ import { useAuth } from '../../Auth';
 export interface MediaCardType {
     serial: string,
     estado: string,
-    company: string,
+    company: number,
     nombre: string,
     direccion: string,
     ciudad: string,

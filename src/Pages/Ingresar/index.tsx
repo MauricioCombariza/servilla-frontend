@@ -4,7 +4,8 @@ import Container from '@mui/material/Container';
 import { useAuth } from "../../Auth";
 import { AuthContextProps } from "../../Auth";
 import { LoginType } from "../../Hooks/usePostLogin";
-import { usePostLogin } from "../../Hooks/usePostLogin";
+import { usePostLogin, LOADING_STATUS } from "../../Hooks/usePostLogin";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
 
 interface FormData {
     auth: AuthContextProps
@@ -19,42 +20,46 @@ const Ingresar = () => {
     const form = useRef<HTMLFormElement>(null)
     
     const OnFormSubmit = (dataLogin: LoginType) => usePostLogin(dataLogin);
-
+    
     const [errorMensaje, setErrorMensaje] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<string>('')
 
 
     
     const login = async (e: FormEvent<HTMLFormElement>) =>{
         e.preventDefault()
-        if (form.current) {
+        setIsLoading(LOADING_STATUS)
+        try {
+          if (form.current) {
             const formData = new FormData(form.current);
             const data: FormData = {
               auth: auth,
-            //   API: 'https://servilla-server-api.onrender.com/user/login',
               API: 'http://127.0.0.1:8000/user/login',
+              // API: 'https://servilla-server-api.onrender.com/user/login',
               email: formData.get('email') as string,
               password: formData.get('password') as string
             };
-        
-            OnFormSubmit(data);
+    
             const response = await OnFormSubmit(data);
-            
-            if (response !== undefined) {
-                console.log("Error")
-            setErrorMensaje(response);
+    
+            if (response.answer !== undefined) {
+              setErrorMensaje(response.answer);
             } else {
-            setErrorMensaje(null); // Limpiar el mensaje de error si la solicitud es exitosa
+              setErrorMensaje(null);
             }
-        } else {
-                    // Manejar el caso en el que form.current es nulo
-                    console.error('form.current es nulo');
-                }  
+          } else {
+            console.error('form.current es nulo');
+          }
+        } finally {
+          setIsLoading(''); // Restablecer el estado de isLoading después de la solicitud
         }
+      };
     
     
     return (
         <div>
             <Container maxWidth="md">
+            
             <form
                 method="post"
                 className="container mt-10 lg:px-20 lg:m-20 mx-2 pt-10 bg-gray-200"
@@ -92,13 +97,23 @@ const Ingresar = () => {
                 </div>
                 
             </form>
-            <div className="text-red-500">
+            {isLoading == 'LOADING' ? (
+
+          <>
+          <h1>Descargando....</h1>
+          <LoadingSpinner />
+          </>
+        ) : ( 
+          <div className="text-red-500">
             {errorMensaje && (
               <p className="text-red-500 font-bold mt-2">
                 {errorMensaje}
               </p>
             )}
           </div>
+             )}
+            
+            
             </Container>
         </div>
     )

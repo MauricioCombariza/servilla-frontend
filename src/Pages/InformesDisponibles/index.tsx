@@ -12,13 +12,18 @@ const InformesDisponibles: () => JSX.Element | null = () => {
     navigate(path);
     auth.setIsMensajero(true)
   }
+  const gestion = () =>{ 
+    const path = '/gestion_documentos'; 
+    navigate(path);
+    auth.setIsMensajero(true)
+  }
 
     return (
   <Layout>
-       <div className="container flex justify-center items-center w-2/3 mt-20 m-6">
+       <div className="container flex flex-col justify-around items-center w-2/3 mt-20 m-6">
        <Button
-       onClick={pendientesMensajeros}
-       variant="contained" color="success" size="large" fullWidth={true}>Pendientes por mensajero
+       onClick={gestion}
+       variant="contained" color="success" size="large" fullWidth={true}>Gestión
        </Button>
        </div>
   </Layout>

@@ -7,7 +7,12 @@ export interface LoginType {
     password: string
 }
 
+export const COMPLETED_STATUS = "COMPLETED"
+export const LOADING_STATUS = "LOADING"
+export const ERROR_STATUS = "ERROR"
+
 const usePostLogin = async (loginData: LoginType) => {
+  
   const res = await fetch(loginData.API, {
     method: "POST",
     headers: {
@@ -17,15 +22,17 @@ const usePostLogin = async (loginData: LoginType) => {
     body: `email=${loginData.email}&password=${loginData.password}`,
   });
   const data = await res.json();
-  const tokenActual = data["access token"];
+  const tokenActual = data.token["access token"];
   const userActual = data.user
-  // console.log(data.user)
+  
   if (res.ok) {
-    await  loginData.auth.login(tokenActual, userActual);
+    loginData.auth.login(tokenActual, userActual);
+    return { answer: data["detail"], requestStatus: COMPLETED_STATUS };    
+  } else {
+    return { answer: data["detail"], requestStatus: ERROR_STATUS }
   }
-  const answer = data["detail"];
-  return answer;
+  
 };
 
-export { usePostLogin };
+export { usePostLogin, };
 

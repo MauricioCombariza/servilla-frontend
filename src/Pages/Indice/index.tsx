@@ -12,8 +12,6 @@ interface FoxResponse {
 const Indice: React.FC = () => {
     const auth = useAuth() as AuthContextProps
     const perfil = auth.user.perfil
-    const company = auth.user.company
-    console.log('Company:',company)
     const [imageUrl, setImageUrl] = useState<string>('');
     const navigate = useNavigate(); 
   const routeSearchServilla = () =>{ 

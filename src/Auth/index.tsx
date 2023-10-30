@@ -54,7 +54,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState({
     email: '',
     username: '',
-    company: '',
+    company: 1,
     activate: 1,
     perfil: 1
   })
@@ -85,7 +85,7 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser({
       email: '',
       username: '',
-      company: '',
+      company: 1,
       activate: 1,
       perfil: 1
     });

@@ -7,7 +7,7 @@ import { AuthContextProps } from '../../Auth';
 
 interface DbType {
 serial: string,
-no_entidad: string,
+no_entidad: number,
 mot_esc: string,
 ret_esc: string,
 nombred: string,
@@ -61,6 +61,7 @@ const SearchedForm = () => {
     
       try {
         const res = await fetch(API, config);
+        
         if (res.status === 401) {
           setErrorMensaje('El serial no ha sido encontrado');
           return

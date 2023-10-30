@@ -11,6 +11,8 @@ import { Registrarse } from '../Pages/Registrarse'
 import { Salir } from '../Pages/Salir'
 import { Indice } from '../Pages/Indice'
 import { Informes } from '../Pages/Informes'
+import { Gestion } from '../Pages/Historico/Servilla/Gestion'
+import { GestionDocumentos } from '../Pages/GestionDocumentos'
 import { InformesDisponibles } from '../Pages/InformesDisponibles'
 import { Alistamiento } from '../Pages/Servicio/Alistamiento'
 import { Distribucion } from '../Pages/Servicio/Distribucion'
@@ -53,12 +55,20 @@ const AppRoutes = () => {
         element: <ProtectRoute><InformesDisponibles /></ProtectRoute>
       },
       {
+        path: "/gestion_documentos",
+        element: <ProtectRoute><GestionDocumentos /></ProtectRoute>
+      },
+      {
         path: "/historico/cliente",
         element: <ProtectRoute><Cliente /></ProtectRoute>
       },
       {
         path: "/historico/servilla",
         element: <ProtectRoute><Servilla /></ProtectRoute>
+      },
+      {
+        path: "/gestion",
+        element: <ProtectRoute><Gestion /></ProtectRoute>
       },
       {
         path:"/ingresar",
